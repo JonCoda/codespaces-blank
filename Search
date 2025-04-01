@@ -4,3 +4,13 @@ import webbrowser
 query = "Boston"
 url = f"https://www.google.com/search?q={query}"
 webbrowser.open(url)
+# Option to open in a different browser
+browser_choice = input("Enter browser name (e.g., 'firefox', 'chrome') or press Enter to use the default: ").strip()
+
+if browser_choice:
+    try:
+        browser = webbrowser.get(browser_choice)
+        browser.open(url)
+    except webbrowser.Error as e:
+        print(f"Error: {e}. Opening with the default browser.")
+        webbrowser.open(url)
