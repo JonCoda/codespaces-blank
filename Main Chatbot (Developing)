@@ -1,0 +1,42 @@
+import os
+import webbrowser
+import requests
+import spacy
+
+def greet(name):
+    """Greets the user."""
+    print(f"Hello, {name}! How can I assist you today?")
+
+def get_user_input():
+    """Gets input from the user."""
+    return input("You: ")
+
+def generate_response(user_input):
+    """Generates a response based on user input."""
+    user_input = user_input.lower()  # Convert to lowercase for easier matching
+
+    if "hello" in user_input or "hi" in user_input:
+        return "Hello there!"
+    elif "how are you" in user_input:
+        return "I'm doing well, thank you for asking!"
+    elif "what's your name" in user_input:
+        return "I'm a friendly chatbot, you can call me Chatty!"
+    elif "bye" in user_input or "goodbye" in user_input:
+        return "Goodbye! Have a great day."
+    else:
+        return "I'm not sure I understand. Can you rephrase?"
+
+def main():
+    name = input("Please enter your name: ")
+    greet(name)
+
+    while True:
+        user_input = get_user_input()
+        response = generate_response(user_input)
+        print("Chatbot:", response)
+
+        if response == "Goodbye! Have a great day.":
+           break
+
+if __name__ == "__main__":
+    main()
